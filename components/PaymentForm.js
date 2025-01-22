@@ -21,11 +21,11 @@ function PaymentForm({ total, items }) {
             message += `• Nombre: ${formData.name}\n\n`;
             message += `• Teléfono: ${formData.phone}\n\n`;
             message += `• Dirección: ${formData.address}\n\n`;
-            message += `• Método de Pago: Transferencia CUP\n\n\n`;
+            message += `• Método de Pago: Efectivo CUP\n\n\n`;
             
             message += `💳 Información de Pago:\n\n`;
             message += `Total a pagar: ${totalCUP.toFixed(2)} CUP\n\n`;
-            message += `Por favor realice la transferencia y envíe el comprobante por este medio.\n\n`;
+            message += `Por favor revise su mercancia por este medio.\n\n`;
             
             message += `\n🛍 Productos:\n\n`;
             items.forEach(item => {
@@ -34,9 +34,9 @@ function PaymentForm({ total, items }) {
             });
             
             message += `\n💰 Total a Pagar: ${totalCUP.toFixed(2)} CUP`;
-            message += ` de 24 a 48 horas pedido completado`;
+            message += ` a menos de 12 horas pedido completado`;
             
-            const whatsappUrl = `https://wa.me/5354066204?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/5353933247?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         };
 
