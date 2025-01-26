@@ -7,7 +7,7 @@ const stores = [
             //Del Cárnico
             {
                 id: 1,
-                name: "Lomo Ahumado ",
+                name: "Lomo Ahumado Bandeja ",
                 price: 1850,
                 image: "lasqueado.jpg",
                 description: "Lomo ahumado lasqueado bandeja de 500 gr sellada",
@@ -15,7 +15,7 @@ const stores = [
             },
             {
                 id: 2,
-                name: "Lomo Ahumado",
+                name: "Lomo Ahumado corte x lb",
                 price: 1680,
                 image: "lomoahumado.jpg",
                 description: "Corte de lomo x lb",
