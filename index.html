@@ -3,40 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TuDespensa - Tu Tienda </title>
-    <meta name="description" content="Encuentra los mejores alimentos frescos y de calidad. Frutas, verduras, carnes y más con entrega a domicilio.">
-    <meta name="keywords" content="alimentos, comida, frutas, verduras, carnes, delivery, tienda de alimentos">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="TuDespensa - Tu Tienda ">
-    <meta property="og:description" content="Encuentra los mejores alimentos frescos y de calidad. Frutas, verduras, carnes y más con entrega a domicilio.">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="TuDespensa - Tu Tienda ">
-    <meta name="twitter:description" content="Encuentra los mejores alimentos frescos y de calidad. Frutas, verduras, carnes y más con entrega a domicilio.">
-    
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
+    <title>TuDespensa.25 - Todo para tu hogar</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <div id="root"></div>
-    <script type="text/babel" src="utils/storeData.js"></script>
-    <script type="text/babel" src="utils/cartUtils.js"></script>
-    <script type="text/babel" src="components/Header.js"></script>
-    <script type="text/babel" src="components/FeatureBoxes.js"></script>
-    <script type="text/babel" src="components/ProductCard.js"></script>
-    <script type="text/babel" src="components/ProductList.js"></script>
-    <script type="text/babel" src="components/CartItem.js"></script>
-    <script type="text/babel" src="components/PaymentForm.js"></script>
-    <script type="text/babel" src="components/Cart.js"></script>
-    <script type="text/babel" src="components/WhatsAppButton.js"></script>
-    <script type="text/babel" src="app.js"></script>
-    <script type="text/babel" src="components/StoreSelector.js"></script>
+    <!-- Header -->
+    <header class="header">
+        <img src="assets/images/logo.png" alt="TuDespensa.25" class="logo">
+        <nav class="navbar">
+            <a href="#alimentos">Alimentos</a>
+            <a href="#hogar">Hogar</a>
+            <a href="#electro">Electrodomésticos</a>
+            <a href="#servicios">Servicios</a>
+        </nav>
+        
+        <!-- Botón del Carrito (Nuevo) -->
+        <button class="cart-btn">
+            🛒 <span class="cart-count">0</span>
+        </button>
+    </header>
+
+    <!-- Modal del Carrito (Nuevo) -->
+    <div class="cart-modal">
+        <div class="cart-modal-content">
+            <h3>Tu Carrito</h3>
+            <div class="cart-items"></div>
+            <p class="cart-total">Total: $<span>0</span></p>
+            <div class="cart-actions">
+                <button class="close-cart">Seguir Comprando</button>
+                <button class="checkout-btn">Pagar Ahora</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Hero -->
+    <section class="hero">
+        <h1>Tu hogar completo en un solo click</h1>
+        <p>Despensa, limpieza, tecnología y expertos eléctricos</p>
+    </section>
+
+    <!-- Sección Alimentos -->
+    <section id="alimentos" class="product-section">
+        <h2>🥦 Despensa Fresca</h2>
+        <div class="product-grid">
+            <!-- Producto de ejemplo con botón de carrito -->
+            <div class="product-card">
+                <h3>Arroz Premium 1kg</h3>
+                <p class="price">$2.99</p>
+                <button class="add-to-cart" 
+                        onclick="addToCart('Arroz Premium 1kg', 2.99)">
+                    Añadir al Carrito
+                </button>
+            </div>
+            <!-- Más productos... -->
+        </div>
+    </section>
+
+    <!-- Sección Servicios Eléctricos -->
+    <section id="servicios" class="service-section">
+        <h2>🔌 Servicios Eléctricos Expertos</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <h3>Instalaciones Residenciales</h3>
+                <button class="cta-button">Solicitar</button>
+            </div>
+            <!-- Más servicios -->
+        </div>
+    </section>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/521234567890" class="whatsapp-btn">
+        <img src="assets/icons/whatsapp.svg" alt="Contactar por WhatsApp">
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 TuDespensa.25 - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- JavaScript del Carrito (Nuevo) -->
+    <script>
+        let cart = [];
+        const cartModal = document.querySelector('.cart-modal');
+        
+        // Función para añadir productos
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+        }
+
+        // Actualizar interfaz del carrito
+        function updateCartUI() {
+            const cartItems = document.querySelector('.cart-items');
+            const cartTotal = document.querySelector('.cart-total span');
+            const cartCount = document.querySelector('.cart-count');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name}</span>
+                        <span>$${item.price.toFixed(2)}</span>
+                        <button onclick="removeItem(${index})">×</button>
+                    </div>`;
+            });
+            
+            cartTotal.textContent = total.toFixed(2);
+            cartCount.textContent = cart.length;
+        }
+
+        // Función para eliminar items
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // Event Listeners
+        document.querySelector('.cart-btn').addEventListener('click', () => {
+            cartModal.style.display = 'block';
+        });
+
+        document.querySelector('.close-cart').addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+
+        document.querySelector('.checkout-btn').addEventListener('click', () => {
+            alert(`¡Compra exitosa! Total: $${cart.reduce((acc, item) => acc + item.price, 0).toFixed(2)}`);
+            cart = [];
+            updateCartUI();
+            cartModal.style.display = 'none';
+        });
+    </script>
 </body>
 </html>

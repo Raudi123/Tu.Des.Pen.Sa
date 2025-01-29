@@ -1,31 +1,88 @@
-.header-shadow {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Variables de Color Corporativo */
+:root {
+    --azul-profesional: #2A5C8B;
+    --verde-fresco: #4CAF50;
+    --amarillo-accion: #FFC107;
+    --gris-tecnico: #606F7B;
+    --blanco: #FFFFFF;
 }
 
-.product-card {
-    transition: transform 0.2s;
+/* Reset y Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.product-card:hover {
-    transform: translateY(-4px);
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
 }
 
-.cart-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+/* Header */
+.header {
+    background: var(--azul-profesional);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.feature-box-shadow {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.logo {
+    width: 180px;
 }
 
-.category-section {
-    scroll-margin-top: 100px;
+.navbar a {
+    color: var(--blanco);
+    margin-left: 2rem;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-.category-icon {
-    transition: transform 0.3s ease;
+.navbar a:hover {
+    color: var(--amarillo-accion);
 }
 
-.category-section:hover .category-icon {
+/* Secciones de Productos */
+.product-section {
+    padding: 4rem 5%;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Servicios Eléctricos */
+.service-section {
+    background: #F7FAFC;
+    padding: 4rem 5%;
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--blanco);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Botón WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    transition: transform 0.3s;
+}
+
+.whatsapp-btn:hover {
     transform: scale(1.1);
 }
