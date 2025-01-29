@@ -9,59 +9,71 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <img src="assets/images/logo.png" alt="TuDespensa.25" class="logo">
         <nav class="navbar">
             <a href="#alimentos">Alimentos</a>
             <a href="#hogar">Hogar</a>
-            <a href="#electro">Electro</a>
+            <a href="#electro">Electrodomésticos</a>
             <a href="#servicios">Servicios</a>
         </nav>
         <button class="cart-btn">🛒 <span class="cart-count">0</span></button>
     </header>
 
     <!-- Carrito -->
-    <div class="cart-popup">
+    <div class="cart-popup" id="cartPopup">
         <div class="popup-content">
-            <h3>Tu Carrito (<span class="cart-count">0</span>)</h3>
+            <div class="popup-header">
+                <h3>🛒 Tu Carrito</h3>
+                <button class="close-popup">&times;</button>
+            </div>
             <div class="cart-items"></div>
-            <p>Total: $<span class="cart-total">0.00</span></p>
-            <button class="checkout-btn">Pagar</button>
-            <button class="close-cart">Cerrar</button>
+            <p class="cart-total">Total: $<span>0.00</span></p>
+            <div class="popup-buttons">
+                <button class="checkout-btn">Pagar Ahora</button>
+                <button class="continue-btn">Seguir Comprando</button>
+            </div>
         </div>
     </div>
+    <div class="overlay" id="overlay"></div>
 
-    <!-- Sección Principal -->
+    <!-- Contenido Principal -->
     <main>
-        <!-- Hero -->
         <section class="hero">
             <h1>Todo para tu hogar en un solo lugar</h1>
-            <p>Despensa • Limpieza • Electrodomésticos • Servicios eléctricos</p>
+            <p>Alimentos frescos • Productos de limpieza • Electrodomésticos • Servicios Expertos</p>
         </section>
 
         <!-- Productos -->
-        <section id="alimentos" class="products">
-            <div class="product-card">
-                <img src="assets/images/alimentos/arroz.jpg" alt="Arroz">
-                <h3>Arroz Premium</h3>
-                <p>$2.99</p>
-                <button class="add-to-cart" data-name="Arroz" data-price="2.99">Añadir</button>
+        <section id="alimentos" class="product-section">
+            <h2>🥦 Despensa Fresca</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="assets/images/alimentos/arroz.jpg" alt="Arroz">
+                    <h3>Arroz Premium 1kg</h3>
+                    <p class="price">$2.99</p>
+                    <button class="add-to-cart" data-name="Arroz Premium 1kg" data-price="2.99">
+                        Añadir al Carrito
+                    </button>
+                </div>
             </div>
-            <!-- Añadir más productos -->
         </section>
 
         <!-- Servicios -->
-        <section id="servicios" class="services">
-            <div class="service-card">
-                <h3>Instalación Eléctrica</h3>
-                <p>Desde $50</p>
-                <button class="request-service">Solicitar</button>
+        <section id="servicios" class="service-section">
+            <h2>⚡ Servicios Eléctricos Profesionales</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>Instalaciones Eléctricas</h3>
+                    <p>Desde $50</p>
+                    <button class="service-btn">Solicitar</button>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 TuDespensa.25</p>
+        <p>© 2024 TuDespensa.25 - Todos los derechos reservados</p>
     </footer>
 
     <script src="js/app.js"></script>
