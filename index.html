@@ -9,133 +9,61 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <img src="assets/images/logo.png" alt="TuDespensa.25" class="logo">
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
         <nav class="navbar">
             <a href="#alimentos">Alimentos</a>
             <a href="#hogar">Hogar</a>
-            <a href="#electro">Electrodomésticos</a>
+            <a href="#electro">Electro</a>
             <a href="#servicios">Servicios</a>
         </nav>
-        
-        <!-- Botón del Carrito (Nuevo) -->
-        <button class="cart-btn">
-            🛒 <span class="cart-count">0</span>
-        </button>
+        <button class="cart-btn">🛒 <span class="cart-count">0</span></button>
     </header>
 
-    <!-- Modal del Carrito (Nuevo) -->
-    <div class="cart-modal">
-        <div class="cart-modal-content">
-            <h3>Tu Carrito</h3>
+    <!-- Carrito -->
+    <div class="cart-popup">
+        <div class="popup-content">
+            <h3>Tu Carrito (<span class="cart-count">0</span>)</h3>
             <div class="cart-items"></div>
-            <p class="cart-total">Total: $<span>0</span></p>
-            <div class="cart-actions">
-                <button class="close-cart">Seguir Comprando</button>
-                <button class="checkout-btn">Pagar Ahora</button>
-            </div>
+            <p>Total: $<span class="cart-total">0.00</span></p>
+            <button class="checkout-btn">Pagar</button>
+            <button class="close-cart">Cerrar</button>
         </div>
     </div>
 
-    <!-- Sección Hero -->
-    <section class="hero">
-        <h1>Tu hogar completo en un solo click</h1>
-        <p>Despensa, limpieza, tecnología y expertos eléctricos</p>
-    </section>
+    <!-- Sección Principal -->
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <h1>Todo para tu hogar en un solo lugar</h1>
+            <p>Despensa • Limpieza • Electrodomésticos • Servicios eléctricos</p>
+        </section>
 
-    <!-- Sección Alimentos -->
-    <section id="alimentos" class="product-section">
-        <h2>🥦 Despensa Fresca</h2>
-        <div class="product-grid">
-            <!-- Producto de ejemplo con botón de carrito -->
+        <!-- Productos -->
+        <section id="alimentos" class="products">
             <div class="product-card">
-                <h3>Arroz Premium 1kg</h3>
-                <p class="price">$2.99</p>
-                <button class="add-to-cart" 
-                        onclick="addToCart('Arroz Premium 1kg', 2.99)">
-                    Añadir al Carrito
-                </button>
+                <img src="assets/images/alimentos/arroz.jpg" alt="Arroz">
+                <h3>Arroz Premium</h3>
+                <p>$2.99</p>
+                <button class="add-to-cart" data-name="Arroz" data-price="2.99">Añadir</button>
             </div>
-            <!-- Más productos... -->
-        </div>
-    </section>
+            <!-- Añadir más productos -->
+        </section>
 
-    <!-- Sección Servicios Eléctricos -->
-    <section id="servicios" class="service-section">
-        <h2>🔌 Servicios Eléctricos Expertos</h2>
-        <div class="service-cards">
+        <!-- Servicios -->
+        <section id="servicios" class="services">
             <div class="service-card">
-                <h3>Instalaciones Residenciales</h3>
-                <button class="cta-button">Solicitar</button>
+                <h3>Instalación Eléctrica</h3>
+                <p>Desde $50</p>
+                <button class="request-service">Solicitar</button>
             </div>
-            <!-- Más servicios -->
-        </div>
-    </section>
-
-    <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/521234567890" class="whatsapp-btn">
-        <img src="assets/icons/whatsapp.svg" alt="Contactar por WhatsApp">
-    </a>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 TuDespensa.25 - Todos los derechos reservados</p>
+        <p>© 2024 TuDespensa.25</p>
     </footer>
 
-    <!-- JavaScript del Carrito (Nuevo) -->
-    <script>
-        let cart = [];
-        const cartModal = document.querySelector('.cart-modal');
-        
-        // Función para añadir productos
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCartUI();
-        }
-
-        // Actualizar interfaz del carrito
-        function updateCartUI() {
-            const cartItems = document.querySelector('.cart-items');
-            const cartTotal = document.querySelector('.cart-total span');
-            const cartCount = document.querySelector('.cart-count');
-            
-            cartItems.innerHTML = '';
-            let total = 0;
-            
-            cart.forEach((item, index) => {
-                total += item.price;
-                cartItems.innerHTML += `
-                    <div class="cart-item">
-                        <span>${item.name}</span>
-                        <span>$${item.price.toFixed(2)}</span>
-                        <button onclick="removeItem(${index})">×</button>
-                    </div>`;
-            });
-            
-            cartTotal.textContent = total.toFixed(2);
-            cartCount.textContent = cart.length;
-        }
-
-        // Función para eliminar items
-        function removeItem(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        // Event Listeners
-        document.querySelector('.cart-btn').addEventListener('click', () => {
-            cartModal.style.display = 'block';
-        });
-
-        document.querySelector('.close-cart').addEventListener('click', () => {
-            cartModal.style.display = 'none';
-        });
-
-        document.querySelector('.checkout-btn').addEventListener('click', () => {
-            alert(`¡Compra exitosa! Total: $${cart.reduce((acc, item) => acc + item.price, 0).toFixed(2)}`);
-            cart = [];
-            updateCartUI();
-            cartModal.style.display = 'none';
-        });
-    </script>
+    <script src="js/app.js"></script>
 </body>
 </html>
